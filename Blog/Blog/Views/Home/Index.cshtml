@@ -1,5 +1,18 @@
-﻿@{
+﻿@model IEnumerable<Blog.Models.HomeIndexArticleModel>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<h1>Index</h1>
+<div class="row">
+    @foreach (var article in Model)
+    {
+        <div class="col-md-4">
+            <h2>@article.Title</h2>
+            <p>
+                @article.Content
+            </p>
+            <p><a class="btn btn-default" href="/Article/Details/@article.Id">Read More &raquo;</a></p>
+        </div>
+    }
+</div>

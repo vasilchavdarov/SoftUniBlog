@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,16 @@ namespace Blog.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("List", "Article");
+            var db = new BlogDbContext();
+
+            var articles = db.Articles.OrderByDescending(a => a.Id).Take(3).Select(a => new HomeIndexArticleModel
+            {
+                Id = a.Id,
+                Title = a.Title,
+                Content = a.Content
+            }).ToList();
+
+            return View(articles);
         }
         
     }

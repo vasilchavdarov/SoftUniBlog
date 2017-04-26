@@ -15,7 +15,7 @@ namespace Blog.Controllers
         {
             using (var db = new BlogDbContext())
             {
-                var articles = db.Articles.Include(a => a.Author).ToList();
+                var articles = db.Articles.OrderByDescending(a => a.Id).Include(a => a.Author).ToList();
 
                 return View(articles);
             }
