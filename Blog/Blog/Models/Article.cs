@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace Blog.Models
         
 
         public string AuthorId { get; set; }
+
+        [Url]
+        [Display(Name = "Past URL Image")]
+        [ImageUrl]
+        public string ImageUrl { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
 
