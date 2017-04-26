@@ -121,7 +121,8 @@ namespace Blog.Controllers
                     Id = article.Id,
                     Title = article.Title,
                     Content = article.Content,
-                    AuthorId = article.AuthorId
+                    AuthorId = article.AuthorId,
+                    ImageUrl = article.ImageUrl
                 };
 
                 return View(articleViewModel);

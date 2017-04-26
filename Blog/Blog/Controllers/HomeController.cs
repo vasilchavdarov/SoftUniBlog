@@ -17,7 +17,8 @@ namespace Blog.Controllers
             {
                 Id = a.Id,
                 Title = a.Title,
-                Content = a.Content
+                Content = a.Content,
+                ImageUrl = a.ImageUrl
             }).ToList();
 
             return View(articles);
