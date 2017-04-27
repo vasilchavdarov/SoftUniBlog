@@ -11,11 +11,18 @@ namespace Blog.Controllers
 {
     public class ArticleController : Controller
     {
-        public ActionResult List()
+        public ActionResult List(string user = null)
         {
             using (var db = new BlogDbContext())
             {
-                var articles = db.Articles.OrderByDescending(a => a.Id).Include(a => a.Author).ToList();
+                var articlesQueri = db.Articles.AsQueryable();
+
+                if (user != null)
+                {
+                    articlesQueri = articlesQueri.Where(a => a.Author.Email == user);
+                }
+
+                var articles = articlesQueri.OrderByDescending(a => a.Id).Include(a => a.Author).ToList();
 
                 return View(articles);
             }

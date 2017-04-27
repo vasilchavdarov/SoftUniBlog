@@ -7,6 +7,9 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
+            <a href="/Article/List?user=@User.Identity.GetUserName()">My Articles</a>
+        </li>
+        <li>
             @Html.ActionLink("Create Article", "Create", "Article", new { area = "" }, new { @class = "navbar-brand" })
         </li>
         <li>
